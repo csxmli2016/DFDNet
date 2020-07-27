@@ -745,7 +745,7 @@ class VGGFeat(torch.nn.Module):
     """
     Input: (B, C, H, W), RGB, [-1, 1]
     """
-    def __init__(self, weight_path='./weights/vgg19-dcbb9e9d.pth'):
+    def __init__(self, weight_path='./weights/vgg19.pth'):
         super().__init__()
         self.model = models.vgg19(pretrained=False)
         self.build_vgg_layers()
