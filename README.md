@@ -21,12 +21,18 @@ Downloading from the following url and put them into ./.
 # Testing
 1. Crop face from the whole image.
 ```bash
-python crop_face.py
+cd ./CropFace
+python crop_face_dlib.py
 ```
+(You can change the image path and save path in line 61~62)
+
 2. Compute the facial landmarks.
 ```bash
-python
+cd ./FaceLandmarkDetection
+python get_face_landmark.py
 ```
+(You can change the image path and save path in line 17~18. This code is from [this work](https://github.com/1adrianb/face-alignment))
+
 3. Run the face restoration.
 ```bash
 python test_FaceDict.py
