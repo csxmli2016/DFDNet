@@ -32,4 +32,3 @@ class TrainOptions(BaseOptions):
         return parser
 
 ##########################################################
-# Action 表示与命令行相关，若命令行里有该变量，表示触发了
