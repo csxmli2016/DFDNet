@@ -96,3 +96,6 @@ booktitle = {ECCV},
 year = {2020}
 }
 ```
+```
+If you want to adopt it in commercial applications, please contact me.
+```
