@@ -31,13 +31,60 @@ python crop_face_dlib.py
 cd ./FaceLandmarkDetection
 python get_face_landmark.py
 ```
-(You can change the image path and save path in line 17~18. This code is from [this work](https://github.com/1adrianb/face-alignment))
+(You can change the image path and save path in line 17~18. This code is mainly borrowed from [this work](https://github.com/1adrianb/face-alignment))
 
 3. Run the face restoration.
 ```bash
 python test_FaceDict.py
 ```
 
+# Restoration results on real low-quality images.
+ <table  style="float:center" width=90%>
+ <tr>
+  <th><B>Input</B></th><th><B>Results</B></th>
+ </tr>
+ <tr>
+  <td>
+  <img src='./Imgs/RealLR/n000056_0060_01.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000056_0060_01.png'>
+  </td>
+ </tr>
+ <tr>
+  <td>
+  <img src='./Imgs/RealLR/n000067_0228_01.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000067_0228_01.png'>
+  </td>
+ </tr>
+ <tr>
+  <td>
+  <img src='./Imgs/RealLR/n000184_0094_01.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000184_0094_01.png'>
+  </td>
+ </tr>
+ <tr>
+  <td>
+  <img src='./Imgs/RealLR/n000262_0097_01.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000262_0097_01.png'>
+  </td>
+ </tr>
+ <tr>
+  <td>
+  <img src='./Imgs/RealLR/n000241_0132_04.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000241_0132_04.png'>
+  </td>
+ </tr>
+  
+ </table>
 
 # Citation
 
