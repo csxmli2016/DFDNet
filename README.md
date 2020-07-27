@@ -8,7 +8,16 @@ Overview of our proposed method. It mainly contains two parts: (a) the off-line 
 <img src="./Imgs/pipeline_b.png">
 <p align="center">(b) Architecture of our DFDNet for dictionary feature transfer.</p>
 
-## All the codes and models will be public available soon.
+
+# Models
+Download the pre-trained model with the following url and put it into ./checkpoints/.
+- [BaiduNetDisk](https://pan.baidu.com/s/1AXq5Hpa0dCSCu1fuj5CkOA) password: c2x2
+- [GoogleDrive](https://drive.google.com/file/d/1UCo7YEbLLa1_87b0AoWmzhTGyrw-26nb/view?usp=sharing)
+
+# Component Dictionaries
+Download the dictionaries with the following url and put it into ./.
+- [BaiduNetDisk](链接: https://pan.baidu.com/s/1p-u6wpLU_ayAm2Lt4D-MLg) password: 3y2r
+- [GoogleDrive](https://drive.google.com/drive/folders/1iwQjHx23O1HVWJ0rtwos8OVZ3mIeCe8r?usp=sharing)
 
 
 # Citation
