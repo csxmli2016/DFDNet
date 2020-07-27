@@ -14,7 +14,7 @@ Downloading from the following url and put them into ./.
 - [BaiduNetDisk](https://pan.baidu.com/s/1K4fzjPiezVSMl5NjHoJCGQ) (s9ht)
 - GoogleDrive: 
     - [DFDModel](https://drive.google.com/drive/folders/1778nIPPuFaUqiF-02APxhPvURRetN9r2?usp=sharing) 
-    - [Vgg](https://drive.google.com/drive/folders/1778nIPPuFaUqiF-02APxhPvURRetN9r2?usp=sharing) 
+    - [Vgg](https://drive.google.com/drive/folders/1toQrnFtsy-SSfCxwzhY69ev92DT6zhhn?usp=sharing) 
     - [Dictionaries](https://drive.google.com/drive/folders/1iwQjHx23O1HVWJ0rtwos8OVZ3mIeCe8r?usp=sharing)
 
 
@@ -38,7 +38,7 @@ python get_face_landmark.py
 python test_FaceDict.py
 ```
 
-## Some plausible restoration results on real low-quality images.
+## Some plausible restoration results on real low-quality images
  <table  style="float:center" width=90%>
  <tr>
   <th><B>Input</B></th><th><B>Results</B></th>
