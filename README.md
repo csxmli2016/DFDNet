@@ -97,5 +97,5 @@ year = {2020}
 }
 ```
 ```
-If you want to adopt it in commercial applications, please contact me.
+This code is released only for educational usage (commercial usage please contact me).
 ```
