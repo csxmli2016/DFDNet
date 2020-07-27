@@ -38,7 +38,7 @@ python get_face_landmark.py
 python test_FaceDict.py
 ```
 
-# Some plausible restoration results on real low-quality images.
+## Some plausible restoration results on real low-quality images.
  <table  style="float:center" width=90%>
  <tr>
   <th><B>Input</B></th><th><B>Results</B></th>
