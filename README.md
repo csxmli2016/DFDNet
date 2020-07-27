@@ -9,26 +9,35 @@ Overview of our proposed method. It mainly contains two parts: (a) the off-line 
 <p align="center">(b) Architecture of our DFDNet for dictionary feature transfer.</p>
 
 
-# Models
-Download the pre-trained model with the following url and put it into ./checkpoints/.
-- [BaiduNetDisk](https://pan.baidu.com/s/1AXq5Hpa0dCSCu1fuj5CkOA) (c2x2)
-- [GoogleDrive](https://drive.google.com/file/d/1UCo7YEbLLa1_87b0AoWmzhTGyrw-26nb/view?usp=sharing)
+# Pre-train Models and dictionaries
+Downloading from the following url and put them into ./.
+- [BaiduNetDisk](https://pan.baidu.com/s/1K4fzjPiezVSMl5NjHoJCGQ) (s9ht)
+- GoogleDrive: 
+    - [DFDModel](https://drive.google.com/drive/folders/1778nIPPuFaUqiF-02APxhPvURRetN9r2?usp=sharing) 
+    - [Vgg](https://drive.google.com/drive/folders/1778nIPPuFaUqiF-02APxhPvURRetN9r2?usp=sharing) 
+    - [Dictionaries](https://drive.google.com/drive/folders/1iwQjHx23O1HVWJ0rtwos8OVZ3mIeCe8r?usp=sharing)
 
-# Component Dictionaries
-Download the dictionaries with the following url and put it into ./.
-- [BaiduNetDisk](https://pan.baidu.com/s/1p-u6wpLU_ayAm2Lt4D-MLg) (3y2r)
-- [GoogleDrive](https://drive.google.com/drive/folders/1iwQjHx23O1HVWJ0rtwos8OVZ3mIeCe8r?usp=sharing)
 
-#Testing
+# Testing
+1. Crop face from the whole image.
+```bash
+python crop_face.py
+```
+2. Compute the facial landmarks.
+```bash
+python
+```
+3. Run the face restoration.
 ```bash
 python test_FaceDict.py
 ```
+
 
 # Citation
 
 ```
 @InProceedings{Li_2020_ECCV,
-author = {Li, Xiaoming and Chen, Chaofeng and Zhou, Shangchen and Lin, Xianhui and Zuo, Wangmeng and Zhang, Lei},
+author = {Li, Xiaoming and Chen, Chaofeng and Zhou, Shangchen and Lin, Xianhui, Zuo, Wangmeng and Zhang, Lei},
 title = {Blind Face Restoration via Deep Multi-scale Component Dictionaries},
 booktitle = {ECCV},
 year = {2020}
