@@ -1,0 +1,116 @@
+# -- coding: utf-8 --
+import os.path
+import random
+import torchvision.transforms as transforms
+import torch
+from data.base_dataset import BaseDataset
+from data.image_folder import make_dataset
+from PIL import Image,ImageFilter
+import numpy as np
+
+
+class AlignedDataset(BaseDataset):
+    @staticmethod
+    def modify_commandline_options(parser, is_train):
+        return parser
+
+    def initialize(self, opt):
+
+        self.opt = opt
+        self.root = opt.dataroot
+        self.dir_AB = os.path.join(opt.dataroot, opt.phase)
+        self.AB_paths = sorted(make_dataset(self.dir_AB))
+        # assert(opt.resize_or_crop == 'resize_and_crop')
+        assert(opt.resize_or_crop == 'degradation')
+
+    def AddNoise(self,img): #加噪音
+        self.sigma = np.random.randint(7,30)
+        if self.sigma >20 :
+            return img
+        img_tensor = torch.from_numpy(np.array(img)).float()
+        noise = torch.randn(img_tensor.size()).mul_(self.sigma/1.0)
+
+        noiseimg = torch.clamp(noise+img_tensor,0,255)
+        return Image.fromarray(np.uint8(noiseimg.numpy()))
+
+    def AddBlur(self,img): #高斯模糊
+        pass
+    def __getitem__(self, index): #重构torch.util.data里的__getitem__函数
+        AB_path = self.AB_paths[index]
+        AB = Image.open(AB_path).convert('RGB')
+        w, h = AB.size
+        w2 = int(w / 2)
+        A = AB.crop((0, 0, w2, h)).resize((self.opt.loadSize, self.opt.loadSize), Image.BICUBIC)
+        B = AB.crop((w2, 0, w, h)).resize((self.opt.loadSize, self.opt.loadSize), Image.BICUBIC)
+
+        w_offset = random.randint(0, max(0, self.opt.loadSize - self.opt.fineSize - 1))
+        h_offset = random.randint(0, max(0, self.opt.loadSize - self.opt.fineSize - 1))
+
+        # A = A[:, h_offset:h_offset + self.opt.fineSize, w_offset:w_offset + self.opt.fineSize] #表示退化图
+        # B = B[:, h_offset:h_offset + self.opt.fineSize, w_offset:w_offset + self.opt.fineSize] #表示引导图
+        # C = C[:, h_offset:h_offset + self.opt.fineSize, w_offset:w_offset + self.opt.fineSize] #表示groundtruth
+        A = A.crop((h_offset,w_offset,h_offset + self.opt.fineSize,w_offset + self.opt.fineSize))
+        B = B.crop((h_offset,w_offset,h_offset + self.opt.fineSize,w_offset + self.opt.fineSize))
+        C = A
+
+        ###开始退化了,上述得到的范围是0到255,先模糊
+        blursigma = random.randint(20,60)
+        if blursigma <= 40:
+            A = A.filter(ImageFilter.GaussianBlur(radius=blursigma/10.0))
+
+        ###再降采样
+        sampler = random.randint(30,160)*1.0
+        if sampler <= 80:
+            A = A.resize((int(self.opt.fineSize/sampler*10.0), int(self.opt.fineSize/sampler*10.0)), Image.BICUBIC)
+
+
+        ###开始加噪声
+
+        A = self.AddNoise(A)
+
+        ###然后上采样到256 256
+        A = A.resize((self.opt.fineSize, self.opt.fineSize), Image.BICUBIC)
+
+        ###归一化
+        A = transforms.ToTensor()(A) #范围为0到1 把0到255的PIL image或者shape为HWC的np.ndarry转化为CHW,取值范围为0到1的torch.FloatTensor
+        B = transforms.ToTensor()(B)
+        C = transforms.ToTensor()(C)
+        
+
+        
+
+
+        ###退化结束了,范围变为-1到1 了
+
+
+        A = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))(A) # 正则化,(image-mean)/std
+        B = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))(B) #范围为-1到1
+        C = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))(C) #范围为-1到1
+
+
+        if self.opt.which_direction == 'BtoA':
+            input_nc = self.opt.output_nc
+            output_nc = self.opt.input_nc
+        else:
+            input_nc = self.opt.input_nc
+            output_nc = self.opt.output_nc
+
+        # if (not self.opt.no_flip) and random.random() < 0.5: ##进行flip,A和B都进行flip
+        #     idx = [i for i in range(A.size(2) - 1, -1, -1)]
+        #     idx = torch.LongTensor(idx)
+        #     A = A.index_select(2, idx)
+        #     B = B.index_select(2, idx)
+        #     C = C.index_select(2, idx)
+
+
+        # return {'A': A, 'B': B, 'C':C, 'N':noise,
+        #         'A_paths': AB_path, 'B_paths': AB_path}
+        return {'A': A, 'B': C, 'C':C,
+                'A_paths': AB_path, 'B_paths': AB_path}
+
+
+    def __len__(self): #这个也必须重构
+        return len(self.AB_paths)
+
+    def name(self):
+        return 'AlignedDataset'
