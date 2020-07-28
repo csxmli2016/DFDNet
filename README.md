@@ -21,19 +21,20 @@ Downloading from the following url and put them into ./.
 cd ./CropFace
 python crop_face_dlib.py
 ```
-(You can change the image path and save path in line 61~62)
+###### (You can change the image path and save path in line 61~62)
 
 2. Compute the facial landmarks.
 ```bash
 cd ./FaceLandmarkDetection
 python get_face_landmark.py
 ```
-(You can change the image path and save path in line 17~18. This code is mainly borrowed from [this work](https://github.com/1adrianb/face-alignment))
+###### (You can change the image path and save path in line 17~18. This code is mainly borrowed from [this work](https://github.com/1adrianb/face-alignment))
 
 3. Run the face restoration.
 ```bash
 python test_FaceDict.py
 ```
+###### （You can run this code directly for the given test images and landmarks. The image path can be revised in line 100~103.）
 
 ## Some plausible restoration results on real low-quality images
  <table  style="float:center" width=90%>
