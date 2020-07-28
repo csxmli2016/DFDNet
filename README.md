@@ -34,7 +34,7 @@ python get_face_landmark.py
 ```bash
 python test_FaceDict.py
 ```
-###### _（You can run this code directly for the given test images and landmarks. The image path can be revised in line 100~103.）_
+###### _（You can directly run this code for the given test images and landmarks without step 1 and 2. The image path can be revised in line 100~103.）_
 
 ## Some plausible restoration results on real low-quality images
  <table  style="float:center" width=90%>
