@@ -15,6 +15,8 @@ Downloading from the following url and put them into ./.
 - [BaiduNetDisk](https://pan.baidu.com/s/1K4fzjPiezVSMl5NjHoJCGQ) (s9ht)
 - [GoogleDrive](https://drive.google.com/drive/folders/1bayYIUMCSGmoFPyd4Uu2Uwn347RW-vl5?usp=sharing)
 
+## Prerequisites
+- Pytorch (≥1.1 is recommended)
 
 # Testing
 1. Crop face from the whole image.
