@@ -15,6 +15,22 @@ Downloading from the following url and put them into ./.
 - [BaiduNetDisk](https://pan.baidu.com/s/1K4fzjPiezVSMl5NjHoJCGQ) (s9ht)
 - [GoogleDrive](https://drive.google.com/drive/folders/1bayYIUMCSGmoFPyd4Uu2Uwn347RW-vl5?usp=sharing)
 
+These folder structure should be:
+    
+    .
+    ├── checkpoints                    
+    │   ├── facefh_dictionary                  
+    │   │   └── latest_net_G.pth   
+    ├── weights
+    │   └── vgg19.pth
+    ├── DictionaryCenter512
+    │   ├── right_eye_256_center.npy
+    │   ├── right_eye_128_center.npy
+    │   ├── right_eye_64_center.npy
+    │   ├── right_eye_32_center.npy
+    │   └── ...
+    └── ...
+
 ## Prerequisites
 - Pytorch (≥1.1 is recommended)
 
