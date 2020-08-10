@@ -47,7 +47,7 @@ python crop_face_dlib.py
 cd ./FaceLandmarkDetection
 python get_face_landmark.py
 ```
-###### _(You can change the image path and save path in line 17~18. This code is mainly borrowed from [this work](https://github.com/1adrianb/face-alignment))_
+###### _(For the first time, you should install the face_alignment package by running ```python setup.py install```. This code is mainly borrowed from [this work.](https://github.com/1adrianb/face-alignment) You can change the image path and save path in line 17~18. )_
 
 3. Run the face restoration.
 ```bash
