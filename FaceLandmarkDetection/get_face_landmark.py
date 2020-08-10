@@ -31,10 +31,10 @@ for i,name in enumerate(ImgNames):
     try:
         PredsAll = fa.get_landmarks(imgO)
     except:
-        print('#########No face')
+        print('#########Error in detection')
         continue
     if PredsAll is None:
-        print('#########No face2')
+        print('#########No face')
         continue
     if len(PredsAll)!=1:
         print('#########too many face')
