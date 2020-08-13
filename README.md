@@ -1,4 +1,8 @@
 # [Blind Face Restoration via Deep Multi-scale Component Dictionaries](https://arxiv.org/pdf/2008.00418.pdf)
+
+### __Note: This 'master' branch only contains the face region without putting them into the origial input. You can refer to 'whole' branch for flexible restoration.__ 
+
+
 <p>
 Overview of our proposed method. It mainly contains two parts: (a) the off-line generation of multi-scale component dictionaries from large amounts of high-quality images, which have diverse poses and expressions. K-means is adopted to generate K clusters for each component (i.e., left/right eyes, nose and mouth) on different feature scales. (b) The restoration process and dictionary feature transfer (DFT) block that are utilized to provide the reference details in a progressive manner. Here, DFT-i block takes the Scale-i component dictionaries for reference in the same feature level.
 </p>  
@@ -31,8 +35,16 @@ These folder structure should be:
     │   └── ...
     └── ...
 
-## Prerequisites
+# Prerequisites
 - Pytorch (≥1.1 is recommended)
+- dlib
+- [face-alignment](https://github.com/1adrianb/face-alignment)
+    ```bash
+    cd ./FaceLandmarkDetection
+    python setup.py install
+    cd ..
+    ```
+    
 
 # Testing
 1. Crop face from the whole image.
@@ -47,7 +59,7 @@ python crop_face_dlib.py
 cd ./FaceLandmarkDetection
 python get_face_landmark.py
 ```
-###### _(For the first time, you should install the face_alignment package by running ```python setup.py install```. This code is mainly borrowed from [this work.](https://github.com/1adrianb/face-alignment) You can change the image path and save path in line 17~18. )_
+###### This code is mainly borrowed from [this work.](https://github.com/1adrianb/face-alignment) You can change the image path and save path in line 17~18. )_
 
 3. Run the face restoration.
 ```bash
@@ -55,7 +67,8 @@ python test_FaceDict.py
 ```
 ###### _（You can directly run this code for the given test images and landmarks without step 1 and 2. The image path can be revised in line 100~103.）_
 
-## Some plausible restoration results on real low-quality images
+# Some plausible restoration results on real low-quality images
+
  <table  style="float:center" width=90%>
  <tr>
   <th><B>Input</B></th><th><B>Results</B></th>
