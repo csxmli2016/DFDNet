@@ -123,7 +123,7 @@ class BaseModel():
                 net = getattr(self, 'net' + name)
                 if isinstance(net, torch.nn.DataParallel):
                     net = net.module
-                print('loading the model from %s' % load_path)
+                # print('loading the model from %s' % load_path)
                 # if you are using PyTorch newer than 0.4 (e.g., built from
                 # GitHub source), you can remove str() on self.device
                 if not os.path.exists(load_path):
@@ -151,17 +151,17 @@ class BaseModel():
 
     # print network information
     def print_networks(self, verbose):
-        print('---------- Networks initialized -------------')
+        # print('---------- Networks initialized -------------')
         for name in self.model_names:
             if isinstance(name, str):
                 net = getattr(self, 'net' + name)
                 num_params = 0
                 for param in net.parameters():
                     num_params += param.numel()
-                if verbose:
-                    print(net)
-                print('[Network %s] Total number of parameters : %.3f M' % (name, num_params / 1e6))
-        print('-----------------------------------------------')
+                # if verbose:
+                #     print(net)
+                # print('[Network %s] Total number of parameters : %.3f M' % (name, num_params / 1e6))
+        # print('-----------------------------------------------')
 
     # set requies_grad=Fasle to avoid computation
     def set_requires_grad(self, nets, requires_grad=False):

@@ -136,7 +136,6 @@ def adaptive_instance_normalization_4D(content_feat, style_feat): # content_feat
     return normalized_feat * style_std.expand(size) + style_mean.expand(size)
 
 def define_G(which_model_netG, gpu_ids=[]):
-    print(which_model_netG)
     if which_model_netG == 'UNetDictFace':
         netG = UNetDictFace(64)
         init_flag = False
@@ -292,7 +291,7 @@ class StyledUpBlock(nn.Module):
         super().__init__()
         if upsample:
             self.conv1 = nn.Sequential(
-                nn.Upsample(scale_factor=2, mode='bilinear'),
+                nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
                 Blur(out_channel),
                 # EqualConv2d(in_channel, out_channel, kernel_size, padding=padding),
                 SpectralNorm(nn.Conv2d(in_channel, out_channel, kernel_size, padding=padding)),
@@ -306,7 +305,7 @@ class StyledUpBlock(nn.Module):
                 nn.LeakyReLU(0.2),
             )
         self.convup = nn.Sequential(
-                nn.Upsample(scale_factor=2, mode='bilinear'),
+                nn.Upsample(scale_factor=2, mode='bilinear', align_corners=False),
                 # EqualConv2d(out_channel, out_channel, kernel_size, padding=padding),
                 SpectralNorm(nn.Conv2d(out_channel, out_channel, kernel_size, padding=padding)),
                 nn.LeakyReLU(0.2),
@@ -489,7 +488,7 @@ class UNetDictFace(nn.Module):
         self.up2 = StyledUpBlock(ngf*4, ngf*2) #
         self.up3 = StyledUpBlock(ngf*2, ngf) #
         self.up4 = nn.Sequential( # 128
-            # nn.Upsample(scale_factor=2, mode='bilinear'),
+            # nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True),
             SpectralNorm(nn.Conv2d(ngf, ngf, 3, 1, 1)),
             # nn.BatchNorm2d(32),
             nn.LeakyReLU(0.2),
@@ -535,10 +534,10 @@ class UNetDictFace(nn.Module):
             MO_feature = cur_feature[:,:,mo_location[1]:mo_location[3],mo_location[0]:mo_location[2]].clone()
             
             #resize
-            LE_feature_resize = F.interpolate(LE_feature,(LE_Dict_feature.size(2),LE_Dict_feature.size(3)),mode='bilinear')
-            RE_feature_resize = F.interpolate(RE_feature,(RE_Dict_feature.size(2),RE_Dict_feature.size(3)),mode='bilinear')
-            NO_feature_resize = F.interpolate(NO_feature,(NO_Dict_feature.size(2),NO_Dict_feature.size(3)),mode='bilinear')
-            MO_feature_resize = F.interpolate(MO_feature,(MO_Dict_feature.size(2),MO_Dict_feature.size(3)),mode='bilinear')
+            LE_feature_resize = F.interpolate(LE_feature,(LE_Dict_feature.size(2),LE_Dict_feature.size(3)),mode='bilinear',align_corners=False)
+            RE_feature_resize = F.interpolate(RE_feature,(RE_Dict_feature.size(2),RE_Dict_feature.size(3)),mode='bilinear',align_corners=False)
+            NO_feature_resize = F.interpolate(NO_feature,(NO_Dict_feature.size(2),NO_Dict_feature.size(3)),mode='bilinear',align_corners=False)
+            MO_feature_resize = F.interpolate(MO_feature,(MO_Dict_feature.size(2),MO_Dict_feature.size(3)),mode='bilinear',align_corners=False)
 
             LE_Dict_feature_norm = adaptive_instance_normalization_4D(LE_Dict_feature, LE_feature_resize)
             RE_Dict_feature_norm = adaptive_instance_normalization_4D(RE_Dict_feature, RE_feature_resize)
