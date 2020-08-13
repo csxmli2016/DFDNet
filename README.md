@@ -1,4 +1,4 @@
-# DFDNet
+# [Blind Face Restoration via Deep Multi-scale Component Dictionaries](https://arxiv.org/pdf/2008.00418.pdf)
 <p>
 Overview of our proposed method. It mainly contains two parts: (a) the off-line generation of multi-scale component dictionaries from large amounts of high-quality images, which have diverse poses and expressions. K-means is adopted to generate K clusters for each component (i.e., left/right eyes, nose and mouth) on different feature scales. (b) The restoration process and dictionary feature transfer (DFT) block that are utilized to provide the reference details in a progressive manner. Here, DFT-i block takes the Scale-i component dictionaries for reference in the same feature level.
 </p>  
@@ -15,6 +15,24 @@ Downloading from the following url and put them into ./.
 - [BaiduNetDisk](https://pan.baidu.com/s/1K4fzjPiezVSMl5NjHoJCGQ) (s9ht)
 - [GoogleDrive](https://drive.google.com/drive/folders/1bayYIUMCSGmoFPyd4Uu2Uwn347RW-vl5?usp=sharing)
 
+These folder structure should be:
+    
+    .
+    ├── checkpoints                    
+    │   ├── facefh_dictionary                  
+    │   │   └── latest_net_G.pth   
+    ├── weights
+    │   └── vgg19.pth
+    ├── DictionaryCenter512
+    │   ├── right_eye_256_center.npy
+    │   ├── right_eye_128_center.npy
+    │   ├── right_eye_64_center.npy
+    │   ├── right_eye_32_center.npy
+    │   └── ...
+    └── ...
+
+## Prerequisites
+- Pytorch (≥1.1 is recommended)
 
 # Testing
 1. Crop face from the whole image.
@@ -29,7 +47,7 @@ python crop_face_dlib.py
 cd ./FaceLandmarkDetection
 python get_face_landmark.py
 ```
-###### _(You can change the image path and save path in line 17~18. This code is mainly borrowed from [this work](https://github.com/1adrianb/face-alignment))_
+###### _(For the first time, you should install the face_alignment package by running ```python setup.py install```. This code is mainly borrowed from [this work.](https://github.com/1adrianb/face-alignment) You can change the image path and save path in line 17~18. )_
 
 3. Run the face restoration.
 ```bash
@@ -96,5 +114,5 @@ year = {2020}
 }
 ```
 
-###### _This code is released only for educational usage._
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
