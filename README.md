@@ -1,6 +1,6 @@
 ## [Blind Face Restoration via Deep Multi-scale Component Dictionaries](https://arxiv.org/pdf/2008.00418.pdf)
 
->##### __Note: This branch contains all the restoration results, including 512*512 face region and putting them to the origial input. The former version that can only generate the face results be found in [master branch](https://github.com/csxmli2016/DFDNet/tree/master)__ 
+>##### __Note: This branch contains all the restoration results, including 512*512 face region and putting them to the origial input. The former version that can only generate the face results is put in [master branch](https://github.com/csxmli2016/DFDNet/tree/master)__ 
 
 
 <p>
@@ -73,6 +73,20 @@ python test_FaceDict.py
  <tr>
   <th><B>Input</B></th><th><B>Crop and Align</B></th><th><B>Restore Face</B></th><th><B>Final Results (UpScaleWhole=4)</B></th>
  </tr>
+  <tr>
+  <td>
+  <img src='./Imgs/RealLR/n000056_0060_01.png'>
+  </td>
+  <td>
+  <img src='./Imgs/RealLR/n000056_0060_01.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000056_0060_01.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000056_0060_01.png'>
+  </td>
+ </tr>
  <tr>
   <td>
   <img src='./Imgs/Whole/test1_0.jpg'>
@@ -99,6 +113,20 @@ python test_FaceDict.py
   </td>
     <td>
    <img src='./Imgs/Whole/test2_3.jpg'>
+  </td>
+ </tr>
+ <tr>
+  <td>
+  <img src='./Imgs/RealLR/n000184_0094_01.png'>
+  </td>
+  <td>
+  <img src='./Imgs/RealLR/n000184_0094_01.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000184_0094_01.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000184_0094_01.png'>
   </td>
  </tr>
  <tr>
