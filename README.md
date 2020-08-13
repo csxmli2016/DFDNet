@@ -61,9 +61,9 @@ python test_FaceDict.py
 
 #### __Result path contains the following folder:__
 - Step0_Input: ```# Save the input image.```
-- Step1_AffineParam: ```# Save the crop and align parameters for the latter copying the face result to the original input.```
+- Step1_AffineParam: ```# Save the crop and align parameters for copying the face result to the original input.```
 - Step1_CropImg: ```# Save the cropped face images and resize them to 512×512.```
-- Step2_Landmarks: ```# Save the landmarks for RoIAlign.```
+- Step2_Landmarks: ```# Save the facial landmarks for RoIAlign.```
 - Step3_RestoreCropFace: ```# Save the face restoration results (512×512).```
 - Step4_FinalResults: ```# Save the final restoration results by putting the face result to the original input.```
 
@@ -71,7 +71,7 @@ python test_FaceDict.py
 
  <table  style="float:center" width=100%>
  <tr>
-  <th><B>Input</B></th><th><B>Crop Face</B></th><th><B>Restore Face</B></th><th><B>Final Results</B></th>
+  <th><B>Input</B></th><th><B>Crop and Align</B></th><th><B>Restore Face</B></th><th><B>Final Results (UpScaleWhole=4)</B></th>
  </tr>
  <tr>
   <td>
