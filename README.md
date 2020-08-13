@@ -1,6 +1,6 @@
 ## [Blind Face Restoration via Deep Multi-scale Component Dictionaries](https://arxiv.org/pdf/2008.00418.pdf)
 
->##### __Note: This branch contains all the restoration results, including 512*512 face region and putting them to the origial input. The former version can be found in [master branch](https://github.com/csxmli2016/DFDNet/tree/master)__ 
+>##### __Note: This branch contains all the restoration results, including 512*512 face region and putting them to the origial input. The former version that can only generate the face results be found in [master branch](https://github.com/csxmli2016/DFDNet/tree/master)__ 
 
 
 <p>
