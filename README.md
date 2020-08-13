@@ -87,6 +87,20 @@ python test_FaceDict.py
    <img src='./Imgs/ShowResults/n000056_0060_01.png'>
   </td>
  </tr>
+  <tr>
+  <td>
+  <img src='./Imgs/RealLR/n000184_0094_01.png'>
+  </td>
+  <td>
+  <img src='./Imgs/RealLR/n000184_0094_01.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000184_0094_01.png'>
+  </td>
+  <td>
+   <img src='./Imgs/ShowResults/n000184_0094_01.png'>
+  </td>
+ </tr>
  <tr>
   <td>
   <img src='./Imgs/Whole/test1_0.jpg'>
@@ -113,20 +127,6 @@ python test_FaceDict.py
   </td>
     <td>
    <img src='./Imgs/Whole/test2_3.jpg'>
-  </td>
- </tr>
- <tr>
-  <td>
-  <img src='./Imgs/RealLR/n000184_0094_01.png'>
-  </td>
-  <td>
-  <img src='./Imgs/RealLR/n000184_0094_01.png'>
-  </td>
-  <td>
-   <img src='./Imgs/ShowResults/n000184_0094_01.png'>
-  </td>
-  <td>
-   <img src='./Imgs/ShowResults/n000184_0094_01.png'>
   </td>
  </tr>
  <tr>
