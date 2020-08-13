@@ -1,6 +1,6 @@
 ## [Blind Face Restoration via Deep Multi-scale Component Dictionaries](https://arxiv.org/pdf/2008.00418.pdf)
 
->#### __Note: This branch contains all the restoration results, including 512*512 face region and putting them to the origial input.__ 
+>##### __Note: This branch contains all the restoration results, including 512*512 face region and putting them to the origial input.__ 
 
 
 <p>
@@ -59,7 +59,7 @@ python test_FaceDict.py
 
 >Note: our model can only generate 512&times;512 face result and the background will be further enhanced in the future work.)
 
-#### __Results path contains the following foler:__
+#### __Result path contains the following folder:__
 - Step0_Input: ```# Save the input image.```
 - Step1_AffineParam: ```# Save the crop and align parameters for the latter copying the face result to the original input.```
 - Step1_CropImg: ```# Save the cropped face images and resize them to 512×512.```
@@ -71,17 +71,50 @@ python test_FaceDict.py
 
  <table  style="float:center" width=100%>
  <tr>
-  <th><B>Input</B></th><B>Crop Face</B></th><B>Restore Face</B></th><th><B>Final Results</B></th>
+  <th><B>Input</B></th><th><B>Crop Face</B></th><th><B>Restore Face</B></th><th><B>Final Results</B></th>
  </tr>
  <tr>
   <td>
-  <img src='./Imgs/RealLR/n000056_0060_01.png'>
+  <img src='./Imgs/Whole/test1_0.jpg'>
   </td>
   <td>
-   <img src='./Imgs/ShowResults/n000056_0060_01.png'>
+   <img src='./Imgs/Whole/test1_1.jpg'>
+  </td>
+    <td>
+   <img src='./Imgs/Whole/test1_2.jpg'>
+  </td>
+    <td>
+   <img src='./Imgs/Whole/test1_3.jpg'>
   </td>
  </tr>
- 
+ <tr>
+  <td>
+  <img src='./Imgs/Whole/test2_0.jpg'>
+  </td>
+  <td>
+   <img src='./Imgs/Whole/test2_1.jpg'>
+  </td>
+    <td>
+   <img src='./Imgs/Whole/test2_2.jpg'>
+  </td>
+    <td>
+   <img src='./Imgs/Whole/test2_3.jpg'>
+  </td>
+ </tr>
+ <tr>
+  <td>
+  <img src='./Imgs/Whole/test5_0.jpg'>
+  </td>
+  <td>
+   <img src='./Imgs/Whole/test5_1.jpg'>
+  </td>
+    <td>
+   <img src='./Imgs/Whole/test5_2.jpg'>
+  </td>
+    <td>
+   <img src='./Imgs/Whole/test5_3.jpg'>
+  </td>
+ </tr>
   
  </table>
 
