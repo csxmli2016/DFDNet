@@ -42,6 +42,11 @@ def save_images(webpage, visuals, image_path, aspect_ratio=1.0, width=256):
         links.append(link_name)
     webpage.add_images(ims, txts, links, width=width)
 
+def save_crop(visuals, save_path):
+    im_data = visuals['fake_A']
+    im = util.tensor2im(im_data)
+    util.save_image(im, save_path)
+
 # save image to the disk
 def save_images_test(webpage, visuals, image_dir, image_path, aspect_ratio=1.0, width=256):
     # image_dir = webpage.get_image_dir()
