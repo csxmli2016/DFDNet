@@ -26,9 +26,15 @@ def get_5_points(img):
     dets = detector(img, 1)
     if len(dets) == 0:
         return None
-    shape = sp(img, dets[0].rect) 
+    areas = []
+    if len(dets) > 1:
+        print('\t###### Warning: more than one face is detected. In this version, we only handle the largest one.')
+    for i in range(len(dets)):
+        area = (dets[i].rect.right()-dets[i].rect.left())*(dets[i].rect.bottom()-dets[i].rect.top())
+        areas.append(area)
+    ins = areas.index(max(areas))
+    shape = sp(img, dets[ins].rect) 
     single_points = []
-
     for i in range(5):
         single_points.append([shape.part(i).x, shape.part(i).y])
     return np.array(single_points) 
@@ -146,10 +152,10 @@ if __name__ == '__main__':
     #######################################################################
     ########################### Test Param ################################
     #######################################################################
-    opt.gpu_ids = [0] # if use cpu, set opt.gpu_ids = []
-    TestImgPath = './TestData/TestWhole' # test image path
-    ResultsDir = './Results/TestWhole' #save path 
-    UpScaleWhole = 4  # the upsamle scale. It should be noted that our face results are fixed to 512.
+    opt.gpu_ids = [1] # if use cpu, set opt.gpu_ids = []
+    TestImgPath = '/home/lxm/ExpCodes/FaceE/TestData/src/0000_1000' # test image path
+    ResultsDir = '/home/lxm/ExpCodes/FaceE/TestData/src/0000_1000_Face' #save path 
+    UpScaleWhole = 2  # the upsamle scale. It should be noted that our face results are fixed to 512.
 
     print('\n###################### Now Running the X {} task ##############################'.format(UpScaleWhole))
 
@@ -212,7 +218,7 @@ if __name__ == '__main__':
             for l in PredsAll:
                 hights.append(l[8,1] - l[19,1])
             ins = hights.index(max(hights))
-            print('\t################ Warning: Detected too many face, only handle the largest one...')
+            # print('\t################ Warning: Detected too many face, only handle the largest one...')
             # continue
         preds = PredsAll[ins]
         AddLength = np.sqrt(np.sum(np.power(preds[27][0:2]-preds[33][0:2],2)))
@@ -244,9 +250,13 @@ if __name__ == '__main__':
             continue #no landmark
         total = total + 1
         model.set_input(data)
-        model.test()
-        visuals = model.get_current_visuals()
-        save_crop(visuals,os.path.join(SaveRestorePath,ImgName))
+        try:
+            model.test()
+            visuals = model.get_current_visuals()
+            save_crop(visuals,os.path.join(SaveRestorePath,ImgName))
+        except:
+            print('\t################ Error in enhancing this image, continue...')
+            continue
 
     #######################################################################
     ############ Step 4: Paste the Results to the Input Image #############

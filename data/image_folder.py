@@ -26,6 +26,7 @@ def make_dataset(dirs):
     assert os.path.isdir(dirs), '%s is not a valid directory' % dirs
 
     for root, _, fnames in sorted(os.walk(dirs)):
+        fnames.sort()
         for fname in fnames:
             if is_image_file(fname):
                 path = os.path.join(root, fname)
