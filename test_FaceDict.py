@@ -249,8 +249,9 @@ if __name__ == '__main__':
             model.test()
             visuals = model.get_current_visuals()
             save_crop(visuals,os.path.join(SaveRestorePath,ImgName))
-        except:
-            print('\t################ Error in enhancing this image, continue...')
+        except Exception as e:
+            print('\t################ Error in enhancing this image: '+e)
+            print('\t################ continue...')
             continue
 
     #######################################################################
