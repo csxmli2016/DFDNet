@@ -53,7 +53,7 @@ python test_FaceDict.py
 #### __Four parameters in ```test_FaceDict.py``` can be changed for flexible usage:__
 - [Line 149](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L149): ```opt.gpu_ids = [0] # gpu id. if use cpu, set opt.gpu_ids = []```
 - [Line 150](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L150): ```TestImgPath = './TestData/TestWhole' # test image path```
-- [Line 151](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L151): ```ResultsDir = './Results/TestWhole' #save path```
+- [Line 151](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L151): ```ResultsDir = './Results/TestWhole' # save path```
 - [Line 152](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L152): ```UpScaleWhole = 4  # the upsample scale factor for the final result```
 
 >Note: our DFDNet can only generate 512&times;512 face result for any given face image.)
