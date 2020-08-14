@@ -1,6 +1,6 @@
 ## [Blind Face Restoration via Deep Multi-scale Component Dictionaries](https://arxiv.org/pdf/2008.00418.pdf)
 
->##### __Note: This branch contains all the restoration results, including 512*512 face region and putting them to the origial input. The former version that can only generate the face results is put in [master branch](https://github.com/csxmli2016/DFDNet/tree/master)__ 
+>##### __Note: This branch contains all the restoration results, including 512*512 face region and the final result by putting enhanced face to the origial input. The former version that can only generate the face result is put in [master branch](https://github.com/csxmli2016/DFDNet/tree/master)__ 
 
 
 <p>
@@ -47,7 +47,6 @@ These folder structure should be:
     
 
 ## Testing
-1. Crop face from the whole image.
 ```bash
 python test_FaceDict.py
 ```
@@ -55,7 +54,7 @@ python test_FaceDict.py
 - Line 149: ```opt.gpu_ids = [0] # gpu id. if use cpu, set opt.gpu_ids = []```
 - Line 150: ```TestImgPath = './TestData/TestWhole' # test image path```
 - Line 151: ```ResultsDir = './Results/TestWhole' #save path```
-- Line 152: ```UpScaleWhole = 4  # the upsamle scale for the final results```
+- Line 152: ```UpScaleWhole = 4  # the upsample scale for the final result```
 
 >Note: our model can only generate 512&times;512 face result and the background will be further enhanced in the future work.)
 
@@ -64,8 +63,8 @@ python test_FaceDict.py
 - Step1_AffineParam: ```# Save the crop and align parameters for copying the face result to the original input.```
 - Step1_CropImg: ```# Save the cropped face images and resize them to 512×512.```
 - Step2_Landmarks: ```# Save the facial landmarks for RoIAlign.```
-- Step3_RestoreCropFace: ```# Save the face restoration results (512×512).```
-- Step4_FinalResults: ```# Save the final restoration results by putting the face result to the original input.```
+- Step3_RestoreCropFace: ```# Save the face restoration result (512×512).```
+- Step4_FinalResults: ```# Save the final restoration result by putting the enhanced face to the original input.```
 
 ## Some plausible restoration results on real low-quality images
 
