@@ -1,6 +1,6 @@
 ## [Blind Face Restoration via Deep Multi-scale Component Dictionaries](https://arxiv.org/pdf/2008.00418.pdf)
 
->##### __Note: This branch contains all the restoration results, including 512*512 face region and the final result by putting enhanced face to the origial input. The former version that can only generate the face result is put in [master branch](https://github.com/csxmli2016/DFDNet/tree/master)__ 
+>##### __Note: This branch contains all the restoration results, including 512×512 face region and the final result by putting the enhanced face to the origial input. The former version that can only generate the face result is put in [master branch](https://github.com/csxmli2016/DFDNet/tree/master)__ 
 
 
 <p>
@@ -19,7 +19,7 @@ Downloading from the following url and put them into ./.
 - [BaiduNetDisk](https://pan.baidu.com/s/1K4fzjPiezVSMl5NjHoJCGQ) (s9ht)
 - [GoogleDrive](https://drive.google.com/drive/folders/1bayYIUMCSGmoFPyd4Uu2Uwn347RW-vl5?usp=sharing)
 
-These folder structure should be:
+The folder structure should be:
     
     .
     ├── checkpoints                    
@@ -50,11 +50,11 @@ These folder structure should be:
 ```bash
 python test_FaceDict.py
 ```
-#### __Four parameters in ```test_FaceDict.py``` can be changed for flexible restoration:__
+#### __Four parameters in ```test_FaceDict.py``` can be changed for flexible usage:__
 - Line 149: ```opt.gpu_ids = [0] # gpu id. if use cpu, set opt.gpu_ids = []```
 - Line 150: ```TestImgPath = './TestData/TestWhole' # test image path```
 - Line 151: ```ResultsDir = './Results/TestWhole' #save path```
-- Line 152: ```UpScaleWhole = 4  # the upsample scale for the final result```
+- Line 152: ```UpScaleWhole = 4  # the upsample scale factor for the final result```
 
 >Note: our model can only generate 512&times;512 face result and the background will be further enhanced in the future work.)
 
@@ -146,7 +146,7 @@ python test_FaceDict.py
  </table>
 
 ## TO DO LIST (if possible)
-- [ ] Enhance all the face in one image.
+- [ ] Enhance all the faces in one image.
 - [ ] Enhance the background.
 
 
