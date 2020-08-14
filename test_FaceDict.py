@@ -133,7 +133,6 @@ def obtain_inputs(img_path, Landmark_path, img_name):
     
 
     
-
 if __name__ == '__main__':
     opt = TestOptions().parse()
     opt.nThreads = 1   # test code only supports nThreads = 1
@@ -146,6 +145,7 @@ if __name__ == '__main__':
     #######################################################################
     ########################### Test Param ################################
     #######################################################################
+    
     opt.gpu_ids = [0] # if use cpu, set opt.gpu_ids = []
     TestImgPath = './TestData/TestWhole' # test image path
     ResultsDir = './Results/TestWholeResults' #save path 
@@ -159,6 +159,7 @@ if __name__ == '__main__':
     print('\n###############################################################################')
     print('####################### Step 1: Crop and Align Face ###########################')
     print('###############################################################################\n')
+    
     detector = dlib.cnn_face_detection_model_v1('./packages/mmod_human_face_detector.dat')
     sp = dlib.shape_predictor('./packages/shape_predictor_5_face_landmarks.dat')
     reference = np.load('./packages/FFHQ_template.npy') / 2
@@ -255,6 +256,7 @@ if __name__ == '__main__':
     #######################################################################
     ############ Step 4: Paste the Results to the Input Image #############
     #######################################################################
+    
     print('\n###############################################################################')
     print('############### Step 4: Paste the Restored Face to the Input Image ############')
     print('###############################################################################\n')
