@@ -145,6 +145,11 @@ python test_FaceDict.py
   
  </table>
 
+## TO DO LIST (if possible)
+- [ ] Enhance all the face in one image.
+- [ ] Enhance the background.
+
+
 ## Citation
 
 ```
