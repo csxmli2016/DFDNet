@@ -265,7 +265,6 @@ if __name__ == '__main__':
     if not os.path.exists(SaveFianlPath):
         os.makedirs(SaveFianlPath)
     ImgPaths = make_dataset(SaveRestorePath)
-
     for i,ImgPath in enumerate(ImgPaths):
         ImgName = os.path.split(ImgPath)[-1]
         print('Final Restoring {}'.format(ImgName))
