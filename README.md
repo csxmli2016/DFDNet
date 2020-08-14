@@ -56,7 +56,7 @@ python test_FaceDict.py
 - [Line 151](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L151): ```ResultsDir = './Results/TestWhole' #save path```
 - [Line 152](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L152): ```UpScaleWhole = 4  # the upsample scale factor for the final result```
 
->Note: our model can only generate 512&times;512 face result and the background will be further enhanced in the future work.)
+>Note: our DFDNet can only generate 512&times;512 face result for any given face image.)
 
 #### __Result path contains the following folder:__
 - Step0_Input: ```# Save the input image.```
