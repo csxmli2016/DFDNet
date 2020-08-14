@@ -152,10 +152,10 @@ if __name__ == '__main__':
     #######################################################################
     ########################### Test Param ################################
     #######################################################################
-    opt.gpu_ids = [1] # if use cpu, set opt.gpu_ids = []
-    TestImgPath = '/home/lxm/ExpCodes/FaceE/TestData/src/0000_1000' # test image path
-    ResultsDir = '/home/lxm/ExpCodes/FaceE/TestData/src/0000_1000_Face' #save path 
-    UpScaleWhole = 2  # the upsamle scale. It should be noted that our face results are fixed to 512.
+    opt.gpu_ids = [0] # if use cpu, set opt.gpu_ids = []
+    TestImgPath = './TestData/TestWhole' # test image path
+    ResultsDir = './Results/TestWholeResults' #save path 
+    UpScaleWhole = 4  # the upsamle scale. It should be noted that our face results are fixed to 512.
 
     print('\n###################### Now Running the X {} task ##############################'.format(UpScaleWhole))
 
