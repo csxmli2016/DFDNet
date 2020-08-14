@@ -53,32 +53,25 @@ def align_and_save(img_path, save_path, save_input_path, save_param_path, upsamp
     crop_img = cv2.warpAffine(img, M, out_size)
     io.imsave(save_path, crop_img) #save the crop and align face
     io.imsave(save_input_path, img) #save the whole input image
-
     tform2 = trans.SimilarityTransform()  
     tform2.estimate(reference, source*upsample_scale)
     # inv_M = cv2.invertAffineTransform(M)
     np.savetxt(save_param_path, tform2.params[0:2,:],fmt='%.3f') #save the inverse affine parameters
     
-
 def reverse_align(input_path, face_path, param_path, save_path, upsample_scale=2):
     out_size = (512, 512) 
     input_img = dlib.load_rgb_image(input_path)
     h,w,_ = input_img.shape
     face512 = dlib.load_rgb_image(face_path)
     inv_M = np.loadtxt(param_path)
-
     inv_crop_img = cv2.warpAffine(face512, inv_M, (w*upsample_scale,h*upsample_scale))
     mask = np.ones((512, 512, 3), dtype=np.float32) #* 255
     inv_mask = cv2.warpAffine(mask, inv_M, (w*upsample_scale,h*upsample_scale))
-
     upsample_img = cv2.resize(input_img, (w*upsample_scale, h*upsample_scale))
-
     inv_mask_erosion_removeborder = cv2.erode(inv_mask, np.ones((2 * upsample_scale, 2 * upsample_scale), np.uint8))# to remove the black border
     inv_crop_img_removeborder = inv_mask_erosion_removeborder * inv_crop_img
-
     total_face_area = np.sum(inv_mask_erosion_removeborder)//3
     w_edge = int(total_face_area ** 0.5) // 20 #compute the fusion edge based on the area of face
-
     erosion_radius = w_edge * 2
     inv_mask_center = cv2.erode(inv_mask_erosion_removeborder, np.ones((erosion_radius, erosion_radius), np.uint8))
     blur_size = w_edge * 2
@@ -139,6 +132,7 @@ def obtain_inputs(img_path, Landmark_path, img_name):
     return {'A':A.unsqueeze(0), 'C':C.unsqueeze(0), 'A_paths': A_paths,'Part_locations': Part_locations}
     
 
+    
 
 if __name__ == '__main__':
     opt = TestOptions().parse()
