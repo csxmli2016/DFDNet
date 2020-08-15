@@ -99,22 +99,25 @@ def get_part_location(partpath, imgname):
     Map_RE = list(np.hstack((range(22,27), range(42,48))))
     Map_NO = list(range(29,36))
     Map_MO = list(range(48,68))
-    #left eye
-    Mean_LE = np.mean(Landmarks[Map_LE],0)
-    L_LE = np.max((np.max(np.max(Landmarks[Map_LE],0) - np.min(Landmarks[Map_LE],0))/2,16))
-    Location_LE = np.hstack((Mean_LE - L_LE + 1, Mean_LE + L_LE)).astype(int)
-    #right eye
-    Mean_RE = np.mean(Landmarks[Map_RE],0)
-    L_RE = np.max((np.max(np.max(Landmarks[Map_RE],0) - np.min(Landmarks[Map_RE],0))/2,16))
-    Location_RE = np.hstack((Mean_RE - L_RE + 1, Mean_RE + L_RE)).astype(int)
-    #nose
-    Mean_NO = np.mean(Landmarks[Map_NO],0)
-    L_NO = np.max((np.max(np.max(Landmarks[Map_NO],0) - np.min(Landmarks[Map_NO],0))/2,16))
-    Location_NO = np.hstack((Mean_NO - L_NO + 1, Mean_NO + L_NO)).astype(int)
-    #mouth
-    Mean_MO = np.mean(Landmarks[Map_MO],0)
-    L_MO = np.max((np.max(np.max(Landmarks[Map_MO],0) - np.min(Landmarks[Map_MO],0))/2,16))
-    Location_MO = np.hstack((Mean_MO - L_MO + 1, Mean_MO + L_MO)).astype(int)
+    try:
+        #left eye
+        Mean_LE = np.mean(Landmarks[Map_LE],0)
+        L_LE = np.max((np.max(np.max(Landmarks[Map_LE],0) - np.min(Landmarks[Map_LE],0))/2,16))
+        Location_LE = np.hstack((Mean_LE - L_LE + 1, Mean_LE + L_LE)).astype(int)
+        #right eye
+        Mean_RE = np.mean(Landmarks[Map_RE],0)
+        L_RE = np.max((np.max(np.max(Landmarks[Map_RE],0) - np.min(Landmarks[Map_RE],0))/2,16))
+        Location_RE = np.hstack((Mean_RE - L_RE + 1, Mean_RE + L_RE)).astype(int)
+        #nose
+        Mean_NO = np.mean(Landmarks[Map_NO],0)
+        L_NO = np.max((np.max(np.max(Landmarks[Map_NO],0) - np.min(Landmarks[Map_NO],0))/2,16))
+        Location_NO = np.hstack((Mean_NO - L_NO + 1, Mean_NO + L_NO)).astype(int)
+        #mouth
+        Mean_MO = np.mean(Landmarks[Map_MO],0)
+        L_MO = np.max((np.max(np.max(Landmarks[Map_MO],0) - np.min(Landmarks[Map_MO],0))/2,16))
+        Location_MO = np.hstack((Mean_MO - L_MO + 1, Mean_MO + L_MO)).astype(int)
+    except:
+        return 0
     return torch.from_numpy(Location_LE).unsqueeze(0), torch.from_numpy(Location_RE).unsqueeze(0), torch.from_numpy(Location_NO).unsqueeze(0), torch.from_numpy(Location_MO).unsqueeze(0)
 
 def obtain_inputs(img_path, Landmark_path, img_name):
@@ -131,8 +134,6 @@ def obtain_inputs(img_path, Landmark_path, img_name):
     C = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))(C) #
     return {'A':A.unsqueeze(0), 'C':C.unsqueeze(0), 'A_paths': A_paths,'Part_locations': Part_locations}
     
-
-    
 if __name__ == '__main__':
     opt = TestOptions().parse()
     opt.nThreads = 1   # test code only supports nThreads = 1
@@ -145,8 +146,7 @@ if __name__ == '__main__':
     #######################################################################
     ########################### Test Param ################################
     #######################################################################
-    
-    opt.gpu_ids = [0] # if use cpu, set opt.gpu_ids = []
+    opt.gpu_ids = [0] # gpu id. if use cpu, set opt.gpu_ids = []
     TestImgPath = './TestData/TestWhole' # test image path
     ResultsDir = './Results/TestWholeResults' #save path 
     UpScaleWhole = 4  # the upsamle scale. It should be noted that our face results are fixed to 512.
@@ -241,8 +241,8 @@ if __name__ == '__main__':
         print('Restoring {}'.format(ImgName))
         data = obtain_inputs(SaveCropPath, SaveLandmarkPath, ImgName)
         if data == 0:
-            print('################ wrong part_location')
-            continue #no landmark
+            print('\t################ Error in landmark file, continue...')
+            continue #
         total = total + 1
         model.set_input(data)
         try:
@@ -250,7 +250,7 @@ if __name__ == '__main__':
             visuals = model.get_current_visuals()
             save_crop(visuals,os.path.join(SaveRestorePath,ImgName))
         except Exception as e:
-            print('\t################ Error in enhancing this image: '+e)
+            print('\t################ Error in enhancing this image: {}'.format(str(e)))
             print('\t################ continue...')
             continue
 
