@@ -49,13 +49,15 @@ The folder structure should be:
 
 ## Testing
 ```bash
-python test_FaceDict.py
+python test_FaceDict.py --test_path ./TestData/TestWhole --results_dir ./Results/TestWholeResults --upscale_factor 4 --gpu_ids 0 
 ```
-#### __Four parameters in ```test_FaceDict.py``` can be changed for flexible usage:__
-- [Line 149](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L149): ```opt.gpu_ids = [0] # gpu id. if use cpu, set opt.gpu_ids = []```
-- [Line 150](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L150): ```TestImgPath = './TestData/TestWhole' # test image path```
-- [Line 151](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L151): ```ResultsDir = './Results/TestWhole' # save path```
-- [Line 152](https://github.com/csxmli2016/DFDNet/blob/93a6332f672a806f06356ac2aa8f86b233cfeadf/test_FaceDict.py#L152): ```UpScaleWhole = 4  # the upsample scale factor for the final result```
+#### __Four parameters can be changed for flexible usage:__
+```
+--test_path # test image path
+--results_dir # save the results path
+--upscale_factor # the upsample factor for the final result
+--gpu_ids # gpu id. if use cpu, set gpu_ids=-1
+```
 
 >Note: our DFDNet can only generate 512&times;512 face result for any given face image.
 
