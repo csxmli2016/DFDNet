@@ -194,7 +194,11 @@ if __name__ == '__main__':
     print('###############################################################################\n')
     
     SaveLandmarkPath = os.path.join(ResultsDir,'Step2_Landmarks')
-    FD = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D,device='cuda:0', flip_input=False)
+    if len(opt.gpu_ids) > 0:
+        dev = 'cuda:{}'.format(opt.gpu_ids[0])
+    else:
+        dev = 'cpu'
+    FD = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D,device=dev, flip_input=False)
     if not os.path.exists(SaveLandmarkPath):
         os.makedirs(SaveLandmarkPath)
     ImgPaths = make_dataset(SaveCropPath)
