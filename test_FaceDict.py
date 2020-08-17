@@ -146,10 +146,13 @@ if __name__ == '__main__':
     #######################################################################
     ########################### Test Param ################################
     #######################################################################
-    opt.gpu_ids = [0] # gpu id. if use cpu, set opt.gpu_ids = []
-    TestImgPath = './TestData/TestWhole' # test image path
-    ResultsDir = './Results/TestWholeResults' #save path 
-    UpScaleWhole = 4  # the upsamle scale. It should be noted that our face results are fixed to 512.
+    # opt.gpu_ids = [0] # gpu id. if use cpu, set opt.gpu_ids = []
+    # TestImgPath = './TestData/TestWhole' # test image path
+    # ResultsDir = './Results/TestWholeResults' #save path 
+    # UpScaleWhole = 4  # the upsamle scale. It should be noted that our face results are fixed to 512.
+    TestImgPath = opt.test_path
+    ResultsDir = opt.results_dir
+    UpScaleWhole = opt.upscale_factor
 
     print('\n###################### Now Running the X {} task ##############################'.format(UpScaleWhole))
 
