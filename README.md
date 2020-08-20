@@ -39,6 +39,9 @@ The folder structure should be:
 >([Video Installation Tutorial](https://www.youtube.com/watch?v=OTqGYMSKGF4). Thanks for [bycloudump](https://www.youtube.com/channel/UCfg9ux4m8P0YDITTPptrmLg)'s tremendous help.)
 - Pytorch (≥1.1 is recommended)
 - dlib
+- dominate
+- cv2
+- tqdm
 - [face-alignment](https://github.com/1adrianb/face-alignment)
     ```bash
     cd ./FaceLandmarkDetection
