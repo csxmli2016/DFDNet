@@ -246,6 +246,7 @@ if __name__ == '__main__':
     for i, ImgPath in enumerate(ImgPaths):
         ImgName = os.path.split(ImgPath)[-1]
         print('Restoring {}'.format(ImgName))
+        torch.cuda.empty_cache()
         data = obtain_inputs(SaveCropPath, SaveLandmarkPath, ImgName)
         if data == 0:
             print('\t################ Error in landmark file, continue...')
