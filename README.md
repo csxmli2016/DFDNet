@@ -160,7 +160,7 @@ python test_FaceDict.py --test_path ./TestData/TestWhole --results_dir ./Results
 
 ```
 @InProceedings{Li_2020_ECCV,
-author = {Li, Xiaoming and Chen, Chaofeng and Zhou, Shangchen and Lin, Xianhui, Zuo, Wangmeng and Zhang, Lei},
+author = {Li, Xiaoming and Chen, Chaofeng and Zhou, Shangchen and Lin, Xianhui and Zuo, Wangmeng and Zhang, Lei},
 title = {Blind Face Restoration via Deep Multi-scale Component Dictionaries},
 booktitle = {ECCV},
 year = {2020}
